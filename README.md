@@ -54,8 +54,16 @@ The domain was configured as a new forest with the following settings:
 All prerequisite checks passed. The DNS delegation warning is expected in an isolated lab with no parent zone — no action required.
 
 ![01 - AD DS Feature Installation](screenshots/01-adds-feature-installation.PNG)
+
+---
 ![04 - Prerequisites Check Passed](screenshots/04-prerequisites-check-passed.PNG)
+
+---
+
 ![05 - Domain Promotion Review](screenshots/05-domain-promotion-review.PNG)
+
+---
+
 ![06 - Server Joined to Domain](screenshots/06-server-joined-domain.PNG)
 
 > **Why this matters:** Static IP and loopback DNS are the two most common misconfigurations that break AD promotion. Getting these right before running the wizard is a habit worth building early.
@@ -80,7 +88,13 @@ Users were created inside their respective OUs and added to department security 
 | IT | Mike Reed, Sara Lane | IT_Group |
 
 ![08 - HR Users](screenshots/08-hr-users.PNG)
+
+---
+
 ![09 - HR Group Members](screenshots/09-hr-group-members.PNG)
+
+---
+
 ![15 - IT Group Members](screenshots/15-it-group-members.PNG)
 
 ---
@@ -96,6 +110,9 @@ A GPO named `HR-ControlPanel-Restriction` was created and linked to the HR OU. T
 This prevents HR users from opening Control Panel or the Windows Settings app entirely.
 
 ![10 - GPO Linked to HR OU](screenshots/10-gpo-linked-hr-ou.PNG)
+
+---
+
 ![11 - Control Panel GPO Enabled](screenshots/11-gpo-controlpanel-enabled.PNG)
 
 ### Password Policy
@@ -161,6 +178,9 @@ Permissions were applied at two layers — Share and NTFS — following the prin
 | NTFS | Read, Read & Execute, List Folder Contents |
 
 ![16 - HR Files Share Permissions](screenshots/16-hr-files-share-permissions.PNG)
+
+---
+
 ![17 - HR Files Security Permissions](screenshots/17-hr-files-security-permissions.PNG)
 
 **IT_Files — Full Control (IT_Group)**
@@ -171,6 +191,9 @@ Permissions were applied at two layers — Share and NTFS — following the prin
 | NTFS | Full Control, Modify, Read & Execute, List Folder Contents, Read |
 
 ![18 - IT Files Share Permissions](screenshots/18-it-files-share-permissions.PNG)
+
+---
+
 ![19 - IT Files Security Permissions](screenshots/19-it-files-security-permissions.PNG)
 
 > **Why two permission layers:** Share permissions apply only over the network. NTFS permissions apply always, including local access. Best practice is to grant Full Control at the share level and control access precisely through NTFS. Here HR received Read at both layers intentionally, since they should not modify department files.
